@@ -13,8 +13,6 @@
     <?php
         $connect = mysqli_connect("localhost", "root", "1234");
         mysqli_select_db($connect, "p3337");
-        $selectBooks = "select * from books where bookId=1";
-        // $results = mysqli_query($connect, $selectBooks); 
 
         $selectCount = "select count(*) from books where name like '%" . $_POST["search"]. "%'";
         $countResults= mysqli_query($connect, $selectCount);
@@ -26,7 +24,7 @@
     ?>
 
     <?php
-        if($rowCount == 0)
+        if($rowCount['count(*)'] == 0)
         {
             print "<h1 align='center'>No results found";
             print "</h1>";
@@ -75,8 +73,23 @@
             }
             print "</table>";
         }
-
     ?>
+    <form action="search_results.php" method="post">
+        <h2 align="center">
+            Book Search
+        </h2>
+        <table align="center">
+            <tr>
+                <td>
+                    Book Title
+                </td>
+                <td>
+                    <input type="text" name="search">
+                    <input type="submit" value="Search">
+                </td>
+            </tr>
+        </table>
+    </form>
     
 </body>
 </html>
