@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+</head>
+<body>
+    <?php
+        include("main_menu.php");
+    ?>
+    <?php
+       $connect = mysqli_connect("localhost", "root", "1234");
+       mysqli_select_db($connect, "p3337");
+       $selectBooks = "select books.email, books.name, picpath from books inner join cart on books.name = cart.name";
+       $results = mysqli_query($connect, $selectBooks);
+
+       $selectItems = "select count(bookId) from cart";
+       $countItems = mysqli_query($connect, $selectItems);
+       $items = mysqli_fetch_assoc($countItems);
+    ?>
+
+    <br>
+
+    <?php
+        print "<h1 align='center'>Items in cart: ";
+        print $items["count(bookId)"];
+        print "</h1>";
+    ?>
+    <table align="center" border="2" width="700">
+            <tr>
+                <th>
+                    Seller Email
+                </th>
+
+                <th>
+                    Book Name
+                </th>
+  
+                <th>
+                    Book Picture
+                </th>
+            </tr>
+
+            <?php
+                while($row = mysqli_fetch_assoc($results))
+                {
+
+                    print "<tr>";
+                    print "<td>";
+                    print($row["email"]);
+                    print "</td>";
+ 
+                    print "<td>";
+                    print($row["name"]);
+                    print "</td>";
+                    
+                    print "<td>";
+                    print "<a target='_blank' href='" . $row["picpath"] . "'>";
+                    print "<img src='" . $row["picpath"] . "' width=60\>"; 
+                    print "</a>";
+                    print "</td>";
+                    print "</tr>";
+                }
+            ?>
+           
+        </table>    
+</body>
+</html>
