@@ -2,17 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Search Results</title>
 </head>
 <body>
     <?php
         include("main_menu.php");
+        include("global.php");
     ?>
     <?php
-        $connect = mysqli_connect("localhost", "root", "1234");
-        mysqli_select_db($connect, "p3337");
+        $connect = mysqli_connect("localhost", "root", $dbPass);
+        mysqli_select_db($connect, $db);
 
         $selectCount = "select count(*) from books where name like '%" . $_POST["search"]. "%'";
         $countResults= mysqli_query($connect, $selectCount);
