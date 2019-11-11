@@ -18,14 +18,14 @@
 
        $selectItems = "select count(bookId) from cart where email='" . $_SESSION["email"] . "'";
        $countItems = mysqli_query($connect, $selectItems);
-       $items = mysqli_fetch_assoc($countItems);
+       $count = mysqli_fetch_assoc($countItems);
     ?>
 
     <br>
 
     <?php
         print "<h1 align='center'>Items in cart: ";
-        print $items["count(bookId)"];
+        print $count["count(bookId)"];
         print "</h1>";
     ?>
     <table align="center" border="2" width="700">
