@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="main.css" type="text/css" rel="stylesheet"/>
 
     <title>Shopping Cart</title>
 </head>
@@ -17,14 +16,16 @@
         font-size: 20px;
     }
 </style>
+
 <body>
     <?php
         include("main_menu.php");
+        include("global.php");
     ?>
 
     <?php
-        $connect = mysqli_connect("localhost", "root", "1234");
-        mysqli_select_db($connect, "p3337");
+        $connect = mysqli_connect("localhost", "root", $dbPass);
+        mysqli_select_db($connect, $db);
         $selectBooks = "select * from books where bookId='".
         $_GET["bookId"] . "'";
         $results = mysqli_query($connect, $selectBooks); 
@@ -35,7 +36,7 @@
         if(isset($_POST["btn"]))
         {
             $updateCart = "insert into cart values(null, " . $row["bookId"] . 
-                            ", '" . $_SESSION["email"] . 
+                            ", '" . $email . 
                             "', '" . $row["name"] . "')";
 
             $cartResults = mysqli_query($connect, $updateCart);

@@ -7,16 +7,17 @@
 <body>
     <?php
         include("main_menu.php");
+        include("global.php");
     ?>
     <?php
-       $connect = mysqli_connect("localhost", "root", "1234");
-       mysqli_select_db($connect, "p3337");
+       $connect = mysqli_connect("localhost", "root", $dbPass);
+       mysqli_select_db($connect, $db);
        $selectBooks = "select books.email, books.name, picpath from books 
                         inner join cart on books.name = cart.name
-                        and cart.email = '" . $_SESSION["email"] . "'";
+                        and cart.email = '" . $email . "'";
        $results = mysqli_query($connect, $selectBooks);
 
-       $selectItems = "select count(bookId) from cart where email='" . $_SESSION["email"] . "'";
+       $selectItems = "select count(bookId) from cart where email='" . $email . "'";
        $countItems = mysqli_query($connect, $selectItems);
        $count = mysqli_fetch_assoc($countItems);
     ?>
