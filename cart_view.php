@@ -11,10 +11,12 @@
     <?php
        $connect = mysqli_connect("localhost", "root", "1234");
        mysqli_select_db($connect, "p3337");
-       $selectBooks = "select books.email, books.name, picpath from books inner join cart on books.name = cart.name";
+       $selectBooks = "select books.email, books.name, picpath from books 
+                        inner join cart on books.name = cart.name
+                        and cart.email = '" . $_SESSION["email"] . "'";
        $results = mysqli_query($connect, $selectBooks);
 
-       $selectItems = "select count(bookId) from cart";
+       $selectItems = "select count(bookId) from cart where email='" . $_SESSION["email"] . "'";
        $countItems = mysqli_query($connect, $selectItems);
        $items = mysqli_fetch_assoc($countItems);
     ?>
