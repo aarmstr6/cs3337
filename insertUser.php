@@ -6,9 +6,12 @@
 </head>
 
 <body>
-<?php
-	$connect = mysqli_connect("localhost", "root", "1234");
-	mysqli_select_db($connect, "p3337");
+	<?php
+		include("global.php");
+	?>
+	<?php
+	$connect = mysqli_connect("localhost", "root", $dbPass);
+	mysqli_select_db($connect, $db);
 	$insertUsers = "insert into users values('" .
 		$_POST["email"] ."', '" .
 		$_POST["password"] . "')";

@@ -8,11 +8,12 @@
 <body>
     <?php
         include("main_menu.php");
+        include("global.php");
     ?>
 
     <?php
-        $connect = mysqli_connect("localhost", "root", "1234");
-        mysqli_select_db($connect, "p3337");
+        $connect = mysqli_connect("localhost", "root", $dbPass);
+        mysqli_select_db($connect, $db);
         $selectBooks = "select * from books where email='" . $email . "'";
         $results = mysqli_query($connect, $selectBooks); 
     ?>
@@ -71,8 +72,6 @@
         print "<img src='delete.png' width=60\>"; 
         print "</a>";
         print "</td>";
-
-      
 
         print "</tr>";
 	}

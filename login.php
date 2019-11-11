@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
     <title>Login User</title>
 </head>
 <body>
+    <?php
+		include("global.php");
+	?>
     <?php 
-        $connect = mysqli_connect("localhost", "root", "1234");
-        mysqli_select_db($connect, "p3337");
+        $connect = mysqli_connect("localhost", "root", $dbPass);
+        mysqli_select_db($connect, $db);
         $queryUser = "select * from users where email='" .
         $_POST["email"] .
         "' and password='" .

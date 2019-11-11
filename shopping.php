@@ -8,11 +8,12 @@
 <body>
     <?php
         include("main_menu.php");
+        include("global.php");
     ?>
 
     <?php
-	$connect = mysqli_connect("localhost", "root", "1234");
-	mysqli_select_db($connect, "p3337");
+	$connect = mysqli_connect("localhost", "root", $dbPass);
+	mysqli_select_db($connect, $db);
 	$selectBooks = "select * from books";
 	$results = mysqli_query($connect, $selectBooks); 
     ?>

@@ -1,14 +1,17 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Remove Book From Database</title>
+    <meta charset="utf-8">
+    <title>Remove Book From Database</title>
 </head>
 
 <body>
+    <?php
+		include("global.php");
+	?>
 	<?php
-		$connect = mysqli_connect("localhost", "root", "1234");
-        mysqli_select_db($connect, "p3337");
+		$connect = mysqli_connect("localhost", "root", $dbPass);
+        mysqli_select_db($connect, $db);
     ?>
   
     <?php
@@ -17,7 +20,6 @@
         $result = mysqli_query($connect, $deleteBook);
         header("Location: mybooks.php");
     ?>
-    
     
 </body>
 </html>

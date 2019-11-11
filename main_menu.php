@@ -2,10 +2,11 @@
 
 <?php
     session_start();
-    include("global.php");
     $email = $_SESSION['email'];
     $password = $_SESSION['password'];
+   
 ?>
+
 <ul class="ul_css">
     <li class="li_css">
         <a class="li_css_a" href="shopping.php">Shopping</a>
@@ -31,9 +32,12 @@
     </li>
     <li class="li_css">
         <a class="li_css_a" href="cart_view.php">
-            <img src="shoppingcart.png" width="20" height="20">
+            <img src="shoppingcart.png" width="25" height="20">
         </a>
     </li>
+    <li class="li_css">
+        <a class="li_css_a" href="login.html">Logout</a>
+    </li>            
   
     
 </ul>

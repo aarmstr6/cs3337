@@ -7,14 +7,15 @@
 
 <body>
     <?php
-        include("main_menu.php");
+		include("main_menu.php");
+		include("global.php");
     ?>
 	<h1 align="center">
         Edit your book information
 	</h1>
 	<?php
-		$connect = mysqli_connect("localhost", "root", "1234");
-		mysqli_select_db($connect, "p3337");
+		$connect = mysqli_connect("localhost", "root", $dbPass);
+		mysqli_select_db($connect, $db);
 		$selectBooks = "select * from books where bookId='".
 		$_GET["bookId"] . "'";
 		$results = mysqli_query($connect, $selectBooks); 

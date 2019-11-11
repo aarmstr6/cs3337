@@ -6,9 +6,12 @@
 </head>
 
 <body>
+    <?php
+		include("global.php");
+	?>
 	<?php
-		$connect = mysqli_connect("localhost", "root", "1234");
-        mysqli_select_db($connect, "p3337");
+		$connect = mysqli_connect("localhost", "root", $dbPass);
+        mysqli_select_db($connect, $db);
     ?>
     <?php
         date_default_timezone_set("America/Los_Angeles");
