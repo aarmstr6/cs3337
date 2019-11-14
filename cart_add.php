@@ -26,7 +26,7 @@
     <?php
         $connect = mysqli_connect("localhost", "root", $dbPass);
         mysqli_select_db($connect, $db);
-        $selectBooks = "select * from books where bookId='".
+        $selectBooks = "select * from books where bookId='" .
         $_GET["bookId"] . "'";
         $results = mysqli_query($connect, $selectBooks); 
         $row = mysqli_fetch_assoc($results);
@@ -35,8 +35,8 @@
     <?php
         if(isset($_POST["btn"]))
         {
-            $updateCart = "insert into cart values(null, " . $row["bookId"] . 
-                            ", '" . $email . 
+            $updateCart = "insert into cart values(null, '" . $row["bookId"] . 
+                            "', '" . $email . 
                             "', '" . $row["name"] . "')";
 
             $cartResults = mysqli_query($connect, $updateCart);

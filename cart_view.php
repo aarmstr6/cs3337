@@ -12,14 +12,17 @@
     <?php
        $connect = mysqli_connect("localhost", "root", $dbPass);
        mysqli_select_db($connect, $db);
-       $selectBooks = "select books.email, books.name, picpath from books 
+       $selectCart = "select cart.bookId, books.email, books.name, picpath from books 
                         inner join cart on books.name = cart.name
                         and cart.email = '" . $email . "'";
-       $results = mysqli_query($connect, $selectBooks);
+       $results = mysqli_query($connect, $selectCart);
 
        $selectItems = "select count(bookId) from cart where email='" . $email . "'";
        $countItems = mysqli_query($connect, $selectItems);
        $count = mysqli_fetch_assoc($countItems);
+
+    //    $selectBooks = "select * from books where email='" . $email . "'";
+    //    $bookResults = mysqli_query($connect, $selectBooks);
     ?>
 
     <br>
@@ -42,6 +45,9 @@
                 <th>
                     Book Picture
                 </th>
+                <th>
+                    Remove
+                </th>
             </tr>
 
             <?php
@@ -62,7 +68,15 @@
                     print "<img src='" . $row["picpath"] . "' width=60\>"; 
                     print "</a>";
                     print "</td>";
+
+                    print "<td>";
+                    print "<a href='cart_delete.php?bookId=" . $row["bookId"] . "'>";
+                    print "<img src='delete.png' width=60\>"; 
+                    print "</a>";
+                    print "</td>";
+
                     print "</tr>";
+
                 }
             ?>
            
