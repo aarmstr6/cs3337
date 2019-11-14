@@ -4,7 +4,6 @@
     session_start();
     $email = $_SESSION['email'];
     $password = $_SESSION['password'];
-   
 ?>
 
 <ul class="ul_css">
@@ -18,10 +17,10 @@
         <a class="li_css_a" href="mybooks.php">My Books</a>
     </li>
     <li class="li_css">
-        <a class="li_css_a" href="profile">Profile</a>
+        <a class="li_css_a" href="profile.php">Profile</a>
     </li>
     <li class="li_css">
-        <a class="li_css_a" href="email">
+        <a class="li_css_a" href="email.php">
             <?php
                 print $_SESSION['email'];
             ?>
